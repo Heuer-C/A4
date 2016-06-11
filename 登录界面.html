@@ -1,48 +1,118 @@
 <!DOCTYPE html>
 <html>
-<head>
- <meta charset="UTF-8">
- <title>登录界面</title>
- <style>
-     div.background
-{
-   width: 450px;
-   height:300px;
-   filter:alpha;
-  background-color:rgba(255,255,255,0.2); 
-    margin:0 auto;
-    margin-top:80px;
-}  
-h1{
-    text-align:center;
-     }
- 
-     </style>
-</head>
-<body>
-    <body background="2.jpg">
-        <div>
-           <cneter><img src="en.png" width="412px" height="88px"></cneter>
-        </div>
-        <div class="background">
-            <br>
-            <b><h1><font size=6px color="white">登录</font></h1></b>
-            <br>
-            <form>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size=3.5px color="white">账户: </font>
-	        <input type="text"  name="myName">
-	            <br>
-                <br>
-	             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size=3.5px color="white">密码: </font>
-            <input type="password"  name="pass">
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <center><input type="Submit" value="进入"></center>
 
-            </form>
+<head>
+    <meta charset="UTF-8">
+    <title>登录界面</title>
+    <style>
+        .container {
+            width: 450px;
+            height: 400px;
+            filter: alpha;
+            /*不错，能使用rgba，调节背景div的透明度*/
+            background-color: rgba(255, 255, 255, 0.2);
+            margin: 0 auto;
+            margin-top: 80px;
+            position: relative;
+            /*把溢出的部分隐藏，使得我们的margin-top能在内部使用*/
+            overflow:hidden;
+        }
+        
+        h1 {
+            margin-top: 70px;
+            position: relative;
+            text-align: center;
+        }
+        
+        .space {
+            margin-top: 30px;
+            position: relative;
+            /*
+            text-align:center 对于一切的input元素适用，包括img标签和div均适用。
+            input的整个组件因为字体的居中而组件迁移居中，而div只是其中的字体在整个容器中的居中
+            自己可以做实验。例如在div中添加img，img则是以字的形式存在，意思就是img被当作字体居中
+            */
+            text-align: center;
+        }
+        
+        img {
+            width: 412px;
+            height: 88px;
+        }
+        /*
+        标签选择器的一种类型，适用于多个标签匹配 []中可以填写标签对应的attribute，
+        比如说是一个div 可以查找是否是有font-size，即能以一些内联的样式进行选择
+        */
+        
+        input[type=text],
+        input[type=password] {
+            box-shadow: 0px 0px 20px rgba(251, 23, 11, 0.8);
+            line-height: 20px;
+            font-size: 16px;
+            padding: 5px;
+        }
+        /*
+        在这边给body添加规则，别老是在下面自己加一个body的标签
+        */
+        
+        body {
+            background-image: url("2.jpg");
+            background-repeat: repeat;
+        }
+        
+        .title {
+            width: 100%;
+            position: relative;
+            margin-top: 30px;
+            font-size: 36px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .button{
+            width:50px;
+            height:30px;
+            font-family: Arial, Helvetica, sans-serif, sans-serif ,"Comic Sans MS", cursive, sans-serif;
+            font-size:14px;
+            text-align:center;
+            background-color:lightyellow;
+            color:#252A34;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="space">
+        <img src="en.png">
+    </div>
+    <div class="container">
+        <div class="title">
+            登录
         </div>
+        <form>
+            <div class="space">
+                <font size=3.5px color="white">账户: </font>
+                <input type="text" name="myName">
+            </div>
+            <div class="space">
+                <font size=3.5px color="white">密码: </font>
+                <input type="password" name="pass">
+            </div>
+            <div class="space">
+                <input class="button" type="Submit" value="进入">
+            </div>
+        </form>
+
+
+        <script>
+            //点击登录，有一些简单的小提示出来
+            document.querySelector('form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                alert('密码错误密码错误')
+            })
+        </script>
+    </div>
 </body>
+
 </html>
